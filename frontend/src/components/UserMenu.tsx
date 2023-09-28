@@ -50,8 +50,8 @@ const UserMenu = () => {
   };
 
   useEffect(()=>{
-    if(expired_access_token && access_token) handleLogout()
-  },[expired_access_token, access_token])
+    if(expired_access_token) handleLogout()
+  },[expired_access_token])
 
   useEffect(() => {
     if(username && current_user.isOwner)  dispatch(getUserDataAsync(username));
