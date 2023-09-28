@@ -11,9 +11,7 @@ export const store = configureStore({
     recipe: recipeReducer,
     createRecipe:createRecipeReducer,
     searchedUsers:searchedUsers
-  },
-  devTools: process.env.NODE_ENV === 'development',
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware({}).concat([]),
+  }
 });
 
 export type AppDispatch = typeof store.dispatch;
