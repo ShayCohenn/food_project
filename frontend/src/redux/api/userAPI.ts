@@ -7,7 +7,7 @@ export const loginUser = async (credentials: {
   password: string;
 }) => {
   try {
-    const response = await axios.post(`${API_URL}/users/login/`, credentials);
+    const response = await axios.post(`${API_URL}users/login/`, credentials);
     return response.data;
   } catch (error) {
     throw error;
@@ -16,7 +16,7 @@ export const loginUser = async (credentials: {
 
 export const verifyEmail = async (emailData: VerifyEmail) => {
   try {
-    const response = await axios.post(`${API_URL}/users/email/`, emailData);
+    const response = await axios.post(`${API_URL}users/email/`, emailData);
     return response; // Return response data on success
   } catch (error: any) {
     // Provide a type annotation for error
@@ -30,7 +30,7 @@ export const verifyEmail = async (emailData: VerifyEmail) => {
 
 export const deleteVerifyEmail = async ({ email }: { email: string }) => {
   try {
-    const response = await axios.delete(`${API_URL}/users/email/`, {
+    const response = await axios.delete(`${API_URL}users/email/`, {
       data: { email }, // Pass email in the request body
     });
     return response;
@@ -48,7 +48,7 @@ export const refreshToken = async ({
     console.log(refresh_token);
     
     const response = await axios.post(
-      `${API_URL}/users/refresh/`,
+      `${API_URL}users/refresh/`,
       refresh_token
     );
     return response.data;
@@ -60,7 +60,7 @@ export const refreshToken = async ({
 export const registerUser = async (credentials: RegisterCreds) => {
   try {
     const response = await axios.post(
-      `${API_URL}/users/register/`,
+      `${API_URL}users/register/`,
       credentials
     );
     return response;
@@ -79,7 +79,7 @@ export const checkUserExists = async (username: string) => {
       headers.Authorization = `Bearer ${accessToken}`;
     }
 
-    const response = await axios.get(`${API_URL}/users/profile/${username}/`, {
+    const response = await axios.get(`${API_URL}users/profile/${username}/`, {
       headers,
     });
 
@@ -99,7 +99,7 @@ export const getUserData = async (username: string) => {
       headers.Authorization = `Bearer ${accessToken}`;
     }
 
-    const response = await axios.get(`${API_URL}/users/profile/${username}/`, {
+    const response = await axios.get(`${API_URL}users/profile/${username}/`, {
       headers,
     });
 
@@ -111,7 +111,7 @@ export const getUserData = async (username: string) => {
 
 export const updateUser = async (data: UpdateUserData, username: string) => {
   try {
-    const response = await axios.put(`${API_URL}/users/user/${username}/`, data, {
+    const response = await axios.put(`${API_URL}users/user/${username}/`, data, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("access_token")}`,
       },
@@ -130,7 +130,7 @@ export const followUser = async (
   if (!isFollowing) {
     try {
       const response = await axios.post(
-        `${API_URL}/users/follow/${follower}/${following}/`,
+        `${API_URL}users/follow/${follower}/${following}/`,
         {}, // Empty request body
         {
           headers: {
@@ -145,7 +145,7 @@ export const followUser = async (
   } else {
     try {
       const response = await axios.delete(
-        `${API_URL}/users/follow/${follower}/${following}/`,
+        `${API_URL}users/follow/${follower}/${following}/`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("access_token")}`,
@@ -161,7 +161,7 @@ export const followUser = async (
 
 export const searchUsers = async (param: string) => {
   try {
-    const response = await axios.get(`${API_URL}/users/search?q=${param}`);
+    const response = await axios.get(`${API_URL}users/search?q=${param}`);
     return response;
   } catch (error) {
     throw error;
@@ -171,7 +171,7 @@ export const searchUsers = async (param: string) => {
 
 export const sendPasswordResetEmail = async (data: string) => {
   try {
-      const response = await axios.post(`${API_URL}/users/password-reset/email/`, { email: data });
+      const response = await axios.post(`${API_URL}users/password-reset/email/`, { email: data });
       return response;
   } catch (error) {
       throw error;
@@ -180,7 +180,7 @@ export const sendPasswordResetEmail = async (data: string) => {
 
 export const deleteResetPassword = async (email: string) => {
   try {
-      const response = await axios.delete(`${API_URL}/users/password-reset/email/`, { data: { email } });
+      const response = await axios.delete(`${API_URL}users/password-reset/email/`, { data: { email } });
       return response;
   } catch (error) {
       throw error;
@@ -189,7 +189,7 @@ export const deleteResetPassword = async (email: string) => {
 
 export const resetPassword = async (data: resetData) => {
   try {
-      const response = await axios.post(`${API_URL}/users/password-reset/`, data);
+      const response = await axios.post(`${API_URL}users/password-reset/`, data);
       return response;
   } catch (error) {
       throw error;

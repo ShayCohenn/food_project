@@ -5,7 +5,7 @@ import { CreateRecipeMethod } from "./types";
 export const getRecipe = async (uuid: string) => {
   try {
     const response = await axios.get(
-      `${API_URL}/recipes/search?recipe_id=${uuid}`
+      `${API_URL}recipes/search?recipe_id=${uuid}`
     );
     return response;
   } catch (error) {
@@ -15,7 +15,7 @@ export const getRecipe = async (uuid: string) => {
 
 export const getCuisines = async () => {
   try {
-    const response = await axios.get(`${API_URL}/recipes/cuisine/search`);
+    const response = await axios.get(`${API_URL}recipes/cuisine/search`);
     return response;
   } catch (error) {
     throw error;
@@ -24,7 +24,7 @@ export const getCuisines = async () => {
 
 export const getIngredients = async (ingredient: string) => {
   try {
-    const response = await axios.get(`${API_URL}/recipes/ing?q=${ingredient}`);
+    const response = await axios.get(`${API_URL}recipes/ing?q=${ingredient}`);
     return response;
   } catch (error) {
     throw error;
@@ -33,7 +33,7 @@ export const getIngredients = async (ingredient: string) => {
 
 export const createRecipe = async (data: CreateRecipeMethod) => {
   try {
-    const response = await axios.post(`${API_URL}/recipes/new/`, data, {
+    const response = await axios.post(`${API_URL}recipes/new/`, data, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("access_token")}`,
       },
@@ -47,7 +47,7 @@ export const createRecipe = async (data: CreateRecipeMethod) => {
 export const searchRecipes = async (param: string) => {
   try {
     const response = await axios.get(
-      `${API_URL}/recipes/search?title=${param}`
+      `${API_URL}recipes/search?title=${param}`
     );
     return response;
   } catch (error) {
@@ -64,7 +64,7 @@ export const createRating = async ({
 }) => {
   try {
     const response = await axios.post(
-      `${API_URL}/reviews/recipe/rate/${id}/`,
+      `${API_URL}reviews/recipe/rate/${id}/`,
       { rating: rating }, // Send rating as a JSON object
       {
         headers: {
@@ -80,7 +80,7 @@ export const createRating = async ({
 
 export const getRatings = async (id: string) => {
   try {
-    const response = await axios.get(`${API_URL}/reviews/rate/${id}/`);
+    const response = await axios.get(`${API_URL}reviews/rate/${id}/`);
     return response;
   } catch (error) {
     throw error;
@@ -96,7 +96,7 @@ export const createComment = async ({
 }) => {
   try {
     const response = await axios.post(
-      `${API_URL}/reviews/recipe/comment/${id}/`,
+      `${API_URL}reviews/recipe/comment/${id}/`,
       { comment: comment },
       {
         headers: {
@@ -112,7 +112,7 @@ export const createComment = async ({
 
 export const getComment = async (id: string) => {
   try {
-    const response = await axios.get(`${API_URL}/reviews/comment/${id}/`);
+    const response = await axios.get(`${API_URL}reviews/comment/${id}/`);
     return response;
   } catch (error) {
     throw error;
