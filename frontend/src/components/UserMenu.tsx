@@ -49,10 +49,6 @@ const UserMenu = () => {
     navigate("/login");
   };
 
-  useEffect(()=>{
-    if(expired_access_token) handleLogout()
-  },[expired_access_token])
-
   useEffect(() => {
     if(username && current_user.isOwner)  dispatch(getUserDataAsync(username));
   }, [username]);
