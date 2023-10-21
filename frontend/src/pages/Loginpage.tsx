@@ -1,12 +1,9 @@
 import Layout from "components/Layout";
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { useAppDispatch } from "redux/hooks";
 import { Link, useNavigate } from "react-router-dom";
-import { useJwt } from "react-jwt";
-import { useSelector } from "react-redux";
 import { lock_svg } from "config";
 import { loginAsync } from "redux/features/async_functions/userAsyncSlice";
-import { a_token } from "redux/features/slices/userSlice";
 
 const Loginpage = () => {
   const dispatch = useAppDispatch();
@@ -40,12 +37,6 @@ const Loginpage = () => {
         setError("An error occurred while logging in.");
       });
   };
-  const saved_token = useSelector(a_token) || ""
-  const expired_access_token = useJwt(saved_token).isExpired; // Check token expiration
-  
-  if (!expired_access_token) {
-    navigate("/");
-  }
 
   return (
     <Layout title="SITE | Login" content="Login page">
