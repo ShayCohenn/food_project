@@ -4,7 +4,7 @@ A Social media website that allows users to view and create recipes, allows user
 <a href="https://food-project-x6vc.vercel.app/">Click here to go to the website</a>
 
 ## Frameworks used:
-### back:
+### Back:
 For the database I used <a href="https://supabase.com/">Supabase.com</a>, it uses PostgreSQL
 For the server I used Django
 
